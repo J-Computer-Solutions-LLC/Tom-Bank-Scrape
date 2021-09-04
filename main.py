@@ -41,7 +41,7 @@ class ApplyCreditCard:
         self.driver.find_element_by_id('sMaidenName').send_keys(self.mmn)
         self.driver.find_element_by_id('sEMailAddr2').send_keys(self.email)
         self.driver.find_element_by_id('sSSN').send_keys(self.ssn)
-        self.driver.find_element_by_id('currency').send_keys(self.gross)
+        self.driver.find_element_by_id('sAnnualIncome').send_keys(self.gross)
         self.driver.find_element_by_id('sHousingType').send_keys(self.house)
         self.driver.find_element_by_id('sPosition').send_keys(self.work)
         self.driver.find_element_by_id('sHomePhone').send_keys(self.phone)
