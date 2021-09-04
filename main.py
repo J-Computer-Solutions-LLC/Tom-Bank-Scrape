@@ -58,6 +58,8 @@ class ApplyCreditCard:
 
         self.chase()
         time.sleep(5)
+        self.americanExpress()
+        time.sleep(5)
 
 if __name__ == '__main__':
 
