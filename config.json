@@ -1,0 +1,19 @@
+{
+    "first_name": "foo",
+    "last_name": "bar",
+    "middle_init": "z",
+    "suffix": "jr",
+    "mail": "123 conor st",
+    "city": "pythonville",
+    "state": "California",
+    "zip": "90210",
+    "dob": "09/11/2021",
+    "mmn": "manson",
+    "email": "test@test.com",
+    "ssn": "666-12-1312",
+    "gross": "5",
+    "resident_type": "RENT",
+    "Primary_inco_sour": "EMPLOYEED",
+    "phone": "666-666-1312",
+    "driver-path": "/home/oryx/GitHub/MyGit/Tom-Bank-Scrape/chromedriver"
+}
