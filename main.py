@@ -83,7 +83,7 @@ class ApplyCreditCard:
                 print('Retrying in 1 second')
                 time.sleep(1)
         else:
-            raise e
+            pass
         self.driver.find_element_by_id('street-address-43').send_keys(self.baddress)
         self.driver.find_element_by_id('zip-code-48').send_keys(self.bzip)
         self.driver.find_element_by_id('phone-number-57').send_keys(self.bphone)
@@ -114,7 +114,7 @@ class ApplyCreditCard:
     def apply(self):
         """Apply to Cards"""
 
-        #self.chase()
+        self.chase()
         time.sleep(5)
         self.americanExpress()
         time.sleep(5)
