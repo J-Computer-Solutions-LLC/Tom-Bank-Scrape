@@ -1,5 +1,7 @@
 from selenium import webdriver
+import chromedriver_autoinstaller
 from selenium.webdriver.common.keys import Keys
+from selenium.webdriver.chrome.options import Options 
 from selenium.common.exceptions import NoSuchElementException, ElementClickInterceptedException, NoSuchElementException, ElementNotInteractableException
 import time
 import json
@@ -36,10 +38,18 @@ class ApplyCreditCard:
         self.monthlyCost = data['monthlyCost']
         self.taxID = data['taxID']
         self.companyRole = data['companyRole']
-        self.driver = webdriver.Chrome(data['driver-path'])
+        
+        
 
     def chase(self):
         """Apply to Chase Cards"""
+        chromedriver_autoinstaller.install()
+        options = webdriver.ChromeOptions()
+        options.binary_location = "/usr/bin/google-chrome"
+        options.add_argument("--disable-dev-shm-usage")
+        options.add_argument('--no-sandbox')
+        options.add_argument('--incognito')
+        self.driver = webdriver.Chrome(#options=options, executable_path='chromedriver')
         self.driver.get('https://applynow.chase.com/FlexAppWeb/renderApp.do?SPID=GJ8J&CELL=61DS')
 
         self.driver.find_element_by_id('sFirstName').send_keys(self.fname)
