@@ -1,7 +1,7 @@
 from selenium import webdriver
 import chromedriver_autoinstaller
 from selenium.webdriver.common.keys import Keys
-from selenium.webdriver.chrome.options import Options 
+from selenium.webdriver.chrome.options import Options
 from selenium.common.exceptions import NoSuchElementException, ElementClickInterceptedException, NoSuchElementException, ElementNotInteractableException
 import time
 import json
@@ -38,20 +38,24 @@ class ApplyCreditCard:
         self.monthlyCost = data['monthlyCost']
         self.taxID = data['taxID']
         self.companyRole = data['companyRole']
-        
-        
-
-    def chase(self):
-        """Apply to Chase Cards"""
         chromedriver_autoinstaller.install()
         options = webdriver.ChromeOptions()
         options.binary_location = "/usr/bin/google-chrome"
         options.add_argument("--disable-dev-shm-usage")
         options.add_argument('--no-sandbox')
         options.add_argument('--incognito')
-        self.driver = webdriver.Chrome(#options=options, executable_path='chromedriver')
-        self.driver.get('https://applynow.chase.com/FlexAppWeb/renderApp.do?SPID=GJ8J&CELL=61DS')
+        self.driver = webdriver.Chrome()
 
+        self.driver.execute_script("window.open('https://www.americanexpress.com/us/credit-cards/card-application/apply/bluebusinesscash-credit-card/45094-9-0?intlink=US-Acq-GCP-BusinessCards-ViewAllCards-Apply-BlueBusinessCash#/', 'americanExpress')")
+        self.driver.execute_script("window.open('https://applynow.chase.com/FlexAppWeb/renderApp.do?SPID=GJ8J&CELL=61DS', 'chase');")
+
+
+
+
+    def chase(self):
+        """Apply to Chase Cards"""
+
+        self.driver.switch_to.window('chase')
         self.driver.find_element_by_id('sFirstName').send_keys(self.fname)
         self.driver.find_element_by_id('sMiddleInitial').send_keys(self.mname)
         self.driver.find_element_by_id('sLastName').send_keys(self.lname)
@@ -73,12 +77,11 @@ class ApplyCreditCard:
         acceptCheckBox.click()
         submitButton = self.driver.find_element_by_id('flexappsubmit')
         #submitButton.click()
-        
+
 
     def americanExpress(self):
         """Apply to AmericanExpress Cards"""
-        self.driver.get('https://www.americanexpress.com/us/credit-cards/card-application/apply/bluebusinesscash-credit-card/45094-9-0?intlink=US-Acq-GCP-BusinessCards-ViewAllCards-Apply-BlueBusinessCash#/')
-
+        self.driver.switch_to.window("americanExpress")
         self.driver.find_element_by_id('email-32').send_keys(self.email)
         self.driver.find_element_by_id('business-name-34').send_keys(self.business)
         self.driver.find_element_by_id('business-name-on-card-36').send_keys(self.business)
@@ -125,9 +128,7 @@ class ApplyCreditCard:
         """Apply to Cards"""
 
         self.chase()
-        time.sleep(5)
         self.americanExpress()
-        time.sleep(5)
 
 if __name__ == '__main__':
 
@@ -136,4 +137,3 @@ if __name__ == '__main__':
 
     bot = ApplyCreditCard(data)
     bot.apply()
-
