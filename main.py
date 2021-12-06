@@ -48,10 +48,21 @@ class ApplyCreditCard:
 
         self.driver.execute_script("window.open('https://www.americanexpress.com/us/credit-cards/card-application/apply/bluebusinesscash-credit-card/45094-9-0?intlink=US-Acq-GCP-BusinessCards-ViewAllCards-Apply-BlueBusinessCash#/', 'americanExpress')")
         self.driver.execute_script("window.open('https://applynow.chase.com/FlexAppWeb/renderApp.do?SPID=GJ8J&CELL=61DS', 'chase');")
+        self.driver.execute_script("window.open('https://cards.barclaycardus.com/credit-card/d9b7c26c-b684-43df-96e8-8fea8d666de1?referrerid=BCSCD&xsessionid=21F89F30A127DB980A37613B54ADE190', 'barclay');")
+        self.driver.execute_script("window.open('https://secure.bankofamerica.com/applynow/welcome.go', 'boatravel');")
+        self.driver.execute_script("window.open('https://secure.bankofamerica.com/applynow/welcome.go', 'boacash');")
+        self.driver.execute_script("window.open('https://applynow.capitalone.com/?productId=14012', 'capitalonesaviorone');")
+        self.driver.execute_script("window.open('https://applynow.capitalone.com/?productId=14016', 'capitalonesavior');")
+        self.driver.execute_script("window.open('https://creditcards.chase.com/rewards-credit-cards/sapphire/reserve', 'chasesapphire');")
+        self.driver.execute_script("window.open('https://creditcards.chase.com/business-credit-cards/ink/business-preferred', 'chasecashink');")
+        self.driver.execute_script("window.open('https://www.schwab.com/credit-cards/platinum-card', 'americanexpressplatinumschwab');")
+        self.driver.execute_script("window.open('https://www.americanexpress.com/us/credit-cards/card/platinum/', 'americanexpressplatinum');")
+        self.driver.execute_script("window.open('https://www.americanexpress.com/us/credit-cards/card/amex-everyday-preferred/?eep=25330&linknav=US-Acq-Shop-Consumer-PDP-AEDP-Prospect-click-filmstrip:amex-everyday-preferred', 'americanexpresseverday');")
+        self.driver.execute_script("window.open('https://www.americanexpress.com/us/credit-cards/business/business-credit-cards/american-express-business-gold-card-amex/', 'americanexpressgold');")
 
 
-
-
+    def barclays(self):
+        self.driver.switch_to.window('barclay')
     def chase(self):
         """Apply to Chase Cards"""
 
