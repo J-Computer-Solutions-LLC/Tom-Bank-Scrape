@@ -51,18 +51,21 @@ class ApplyCreditCard:
         self.driver.execute_script("window.open('https://cards.barclaycardus.com/credit-card/d9b7c26c-b684-43df-96e8-8fea8d666de1?referrerid=BCSCD&xsessionid=21F89F30A127DB980A37613B54ADE190', 'barclay');")
         self.driver.execute_script("window.open('https://secure.bankofamerica.com/applynow/welcome.go', 'boatravel');")
         self.driver.execute_script("window.open('https://secure.bankofamerica.com/applynow/welcome.go', 'boacash');")
-        self.driver.execute_script("window.open('https://applynow.capitalone.com/?productId=14012', 'capitalonesaviorone');")
+        self.driver.execute_script("window.open('https://www.alliantcreditunion.com/Clos/Clos/SignatureAgreement', 'alliant');")
         self.driver.execute_script("window.open('https://applynow.capitalone.com/?productId=14016', 'capitalonesavior');")
-        self.driver.execute_script("window.open('https://creditcards.chase.com/rewards-credit-cards/sapphire/reserve', 'chasesapphire');")
-        self.driver.execute_script("window.open('https://creditcards.chase.com/business-credit-cards/ink/business-preferred', 'chasecashink');")
-        self.driver.execute_script("window.open('https://www.schwab.com/credit-cards/platinum-card', 'americanexpressplatinumschwab');")
-        self.driver.execute_script("window.open('https://www.americanexpress.com/us/credit-cards/card/platinum/', 'americanexpressplatinum');")
-        self.driver.execute_script("window.open('https://www.americanexpress.com/us/credit-cards/card/amex-everyday-preferred/?eep=25330&linknav=US-Acq-Shop-Consumer-PDP-AEDP-Prospect-click-filmstrip:amex-everyday-preferred', 'americanexpresseverday');")
-        self.driver.execute_script("window.open('https://www.americanexpress.com/us/credit-cards/business/business-credit-cards/american-express-business-gold-card-amex/', 'americanexpressgold');")
+        self.driver.execute_script("window.open('https://secure03a.chase.com/web/oao/application/card?sourceCode=GMK8&action=guest#/origination/cardDetails/index/index;cellCode=61DS;combo=N', 'chasesapphire');")
+        #self.driver.execute_script("window.open('https://secure05a.chase.com/web/oao/application/card?sourceCode=GJ3X&action=guest#/origination/cardDetails/index/indexBusinessCreditCard;cellCode=61DS;cfgCode=INDBIZCC_SNAICS;channel=C30;sourceCode=GJ3X;AOC=5686;RPC=0514;combo=N;params=,,,no,no,,,', 'chasecashink');")
+        #self.driver.execute_script("window.open('https://www.schwab.com/credit-cards/platinum-card', 'americanexpressplatinumschwab');")
+        self.driver.execute_script("window.open('https://www.americanexpress.com/us/credit-cards/card-application/apply/platinum-card/25330-10-0?pmccode=137&intlink=US-Acq-Shop-Consumer-PDP-Prospect-Apply-Platinum-Header#/', 'americanexpressplatinum');")
+        self.driver.execute_script("window.open('https://www.americanexpress.com/us/credit-cards/card-application/apply/amex-everyday-preferred-credit-card/25330-10-0?pmccode=936&intlink=US-Acq-Shop-Consumer-PDP-Prospect-Apply-AEDP-Header#/', 'americanexpresseverday');")
+        self.driver.execute_script("window.open('https://www.americanexpress.com/us/credit-cards/card-application/apply/businessgold-card/45094-9-0?intlink=US-Acq-GCP-Open-CardDetail-GoldCard-Apply-Gold#/', 'americanexpressgold');")
 
 
     def barclays(self):
         self.driver.switch_to.window('barclay')
+    def chasecashink(self):
+        self.driver.switch_to.window('chasecashink')
+        self.driver.find_element_by_id('blx-nameBlock-firstName-text-validate-input-field').send_keys(self.fname)
     def chase(self):
         """Apply to Chase Cards"""
 
@@ -89,6 +92,31 @@ class ApplyCreditCard:
         submitButton = self.driver.find_element_by_id('flexappsubmit')
         #submitButton.click()
 
+    def americanGold(self):
+        """Apply to Chase Cards"""
+
+        self.driver.switch_to.window('americanexpressgold')
+        self.driver.find_element_by_id('sFirstName').send_keys(self.fname)
+        self.driver.find_element_by_id('sMiddleInitial').send_keys(self.mname)
+        self.driver.find_element_by_id('sLastName').send_keys(self.lname)
+        self.driver.find_element_by_id('sSuffix').send_keys(self.suffix)
+        self.driver.find_element_by_id('sStreetAddr1').send_keys(self.mail)
+        self.driver.find_element_by_id('sCity').send_keys(self.city)
+        self.driver.find_element_by_id('sState1').send_keys(self.state)
+        self.driver.find_element_by_id('sZip').send_keys(self.zip)
+        self.driver.find_element_by_id('sDOB').send_keys(self.dob)
+        self.driver.find_element_by_id('sMaidenName').send_keys(self.mmn)
+        self.driver.find_element_by_id('sEMailAddr2').send_keys(self.email)
+        self.driver.find_element_by_id('sSSN').send_keys(self.ssn)
+        self.driver.find_element_by_id('sAnnualIncome').send_keys(self.gross)
+        self.driver.find_element_by_id('sHousingType').send_keys(self.house)
+        self.driver.find_element_by_id('sPosition').send_keys(self.work)
+        self.driver.find_element_by_id('sHomePhone').send_keys(self.phone)
+        time.sleep(10)
+        acceptCheckBox = self.driver.find_element_by_xpath('/html/body/form/div[1]/div/div[1]/div[2]/div[1]/div[5]/div[3]/div/div/div/div[5]/div[3]/div/div/label/div[1]')
+        acceptCheckBox.click()
+        submitButton = self.driver.find_element_by_id('flexappsubmit')
+        #submitButton.click()
 
     def americanExpress(self):
         """Apply to AmericanExpress Cards"""
@@ -140,6 +168,7 @@ class ApplyCreditCard:
 
         self.chase()
         self.americanExpress()
+        self.chasecashink()
 
 if __name__ == '__main__':
 
